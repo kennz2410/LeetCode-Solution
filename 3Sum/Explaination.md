@@ -7,6 +7,6 @@ Finally, return result array.
 
 ##Tiếng Việt
 Ý tưởng chính: Sử dụng 2 con trỏ.
-Khởi tạo bộ 3 giá trị x, y, z. Khóa x(làm cho x cố định mỗi vòng lặp), bài toán trở thành bài toán 2Sum. Đầu tiên, sắp xếp mảng đã cho. Coi giá trị y, z thay đổi theo 2 con trỏ left và right. Chạy vòng lặp cho đến khi left == right.
+Khởi tạo bộ 3 giá trị x, y, z. Cố định x(làm cho x cố định mỗi vòng lặp), bài toán trở thành bài toán 2Sum. Đầu tiên, sắp xếp mảng đã cho. Coi giá trị y, z thay đổi theo 2 con trỏ left và right. Chạy vòng lặp cho đến khi left == right.
 Nếu sum == 0, đẩy vào mảng kết quả, sau đó cập nhật left và right(left tăng right giảm) bên cạnh đó bỏ qua các phần tử trùng lặp. Nếu sum < 0 thì tăng left, ngược lại thì giảm right.
 Trả về mảng kết quả result.
