@@ -1,0 +1,2 @@
+
+            result += prices[i] - buy;
