@@ -17,6 +17,17 @@ int removeElement(vector<int>& nums, int val) {
     return pivot;
 }
 
-int main(){
+int main() {
+    int n, val;
+    cin >> n;
+    vector<int> nums(n);
+    for(int i = 0; i < n; i++) cin >> nums[i];
+    cin >> val;
 
+    int newSize = removeElement(nums, val);
+
+    cout << newSize << endl;
+    for(int i = 0; i < newSize; i++) cout << nums[i] << " ";
+    cout << endl;
+    return 0;
 }

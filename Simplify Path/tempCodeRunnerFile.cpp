@@ -1,0 +1,1 @@
+i != partResult.size() - 1
