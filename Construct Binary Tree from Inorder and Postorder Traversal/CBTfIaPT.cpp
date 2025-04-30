@@ -26,6 +26,8 @@ public:
 
         newNode->right = recursive(mp, postOrder, postIndex, index + 1, end);
         newNode->left = recursive(mp, postOrder, postIndex, start, index -1);
+
+        return newNode;
     }
 
     TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) {
