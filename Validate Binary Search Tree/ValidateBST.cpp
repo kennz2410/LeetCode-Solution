@@ -11,29 +11,68 @@ struct TreeNode {
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
+// class Solution {
+// public:
+//     bool isValidBST(TreeNode* root) {
+//         int prevVal = INT_MIN;
+//         TreeNode* prev = nullptr;
+//         TreeNode* curr = root;
+        
+//         while(curr != nullptr) {
+//             if(curr->left == nullptr) {
+
+//                 if(curr->val <= prevVal) {
+//                     return false;
+//                 }
+
+//                 prevVal = curr->val;
+//                 curr = curr->right;
+//             } else {
+//                 prev = curr->left;
+//                 while(prev->right != nullptr && prev->right != curr) {
+//                     prev = prev->right;
+//                 }
+
+//                 if(prev->right == nullptr) {
+//                     prev->right = curr;
+//                     curr = curr->left;
+//                 } else {
+//                     prev->right = nullptr;
+
+//                     if(curr->val <= prevVal) {
+//                         return false;
+//                     }
+
+//                     prevVal = curr->val;
+//                     curr = curr->right;
+//                 }
+//             } 
+//         }
+
+//         return true;
+//     }
+// };
+
 class Solution {
 public:
-    void inOrder(TreeNode* root, TreeNode*& prev, bool status) {
-        if(!root) return;
-
-        inOrder(root->left, prev, status);
-
-        if(prev != nullptr && root->val > prev->val ) {
-            status = false;
-            return;
+    bool inOrder(TreeNode* root, long& prev) {
+        if(!root) return true;
+        
+        if(!inOrder(root->left, prev)) {
+            return false;
         }
         
-        prev = root;
-
-        inOrder(root->right, prev, status);
+        if(prev >= root->val) {
+            return false;
+        }
+        
+        prev = root->val;
+        
+        return inOrder(root->right, prev);
     }
 
     bool isValidBST(TreeNode* root) {
-        bool status = true;
-        TreeNode* prev = nullptr;
-
-        inOrder(root, prev, status);
-
-        return status;
+        long prev = LONG_MIN; 
+        return inOrder(root, prev);
     }
 };
